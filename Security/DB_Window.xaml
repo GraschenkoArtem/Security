@@ -1,0 +1,31 @@
+﻿<Window x:Class="Security.DB_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Security"
+        mc:Ignorable="d"
+        Title="Админ" Height="600" Width="600" Background="#FF322F2F" MaxHeight="600" MinHeight="600" MaxWidth="600" MinWidth="600" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox  Name="User_List" Grid.Column="0" Grid.Row="0" Grid.RowSpan="6" Background="#FF322F2F" BorderBrush="Black" Foreground="LightGray" FontSize="18" />
+        <Button Content="Сменить пароль" Grid.Column="1" Grid.Row="0" FontSize="20" Background="#FF272525" BorderBrush="Black" Click="Password_Change"/>
+        <Button Content="Заблокировать пользователя" Grid.Column="1" Grid.Row="1" FontSize="20" Background="#FF272525" BorderBrush="Black" Click="Lock_User"/>
+        <Button Content="Разблокировать пользователя" Grid.Column="1" Grid.Row="2" FontSize="20" Background="#FF272525" BorderBrush="Black" Click="Unlock_User"/>
+        <Button Content="Добавить пользователя" Grid.Column="1" Grid.Row="3" FontSize="20" Background="#FF272525" BorderBrush="Black" Click="Add_User"/>
+        <Button Content="Посмотреть пользователя" Grid.Column="1" Grid.Row="4" FontSize="20" Background="#FF272525" BorderBrush="Black" Click="Open_User"/>
+
+    </Grid>
+
+</Window>

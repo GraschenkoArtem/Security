@@ -1,0 +1,16 @@
+﻿<Window x:Class="Security.User_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Security"
+        mc:Ignorable="d"
+        Title="Пользователь" Height="450" Width="450" Background="#FF322F2F" MaxHeight="450" MinHeight="450" MaxWidth="450" MinWidth="450">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Старый пароль:" Margin="10,107,0,0" Height="30" Width="170" FontWeight="Bold" FontSize="20" TextAlignment="Justify" Foreground="LightGray" VerticalAlignment="Top"/>
+        <TextBox x:Name ="Old_Password_Box" HorizontalAlignment="Left" Height="30"  Width="262" Margin="180,107,0,0" Background="#FF272525" BorderBrush="Black" Foreground="LightGray" FontSize="18" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Новый пароль:" Margin="10,142,0,0" Height="30" Width="170" FontWeight="Bold" FontSize="20" TextAlignment="Justify" Foreground="LightGray" VerticalAlignment="Top"/>
+        <TextBox x:Name ="New_Password_Box" HorizontalAlignment="Left" Height="30"  Width="262" Margin="180,142,0,0" Background="#FF272525" BorderBrush="Black" Foreground="LightGray" FontSize="18" VerticalAlignment="Top" />
+        <Button Content="Сменить пароль" HorizontalAlignment="Left" Margin="125,202,0,0" VerticalAlignment="Top" Width="200" Foreground="LightGray" Background="#FF272525" Height="62" RenderTransformOrigin="0.436,-1.201" Click="Password_Change"/>
+    </Grid>
+</Window>

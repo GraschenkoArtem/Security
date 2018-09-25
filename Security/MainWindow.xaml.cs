@@ -117,20 +117,74 @@ namespace Security
 
 		void User_Enter()
 		{
-			//MessageBox.Show("Привет пользователь!");
+			string path = System.IO.Path.GetFullPath("Userdb.mdf");
 
-			User_Window New_User_Window = new User_Window();
-			New_User_Window.Owner = this;
+			string connectionS = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + ";Integrated Security=True";
+			sqlConnection = new SqlConnection(connectionS);
 
-			New_User_Window.login = Login_Box.Text;
-			New_User_Window.password = Password_Box.Password;
-			this.Hide();
-			if (New_User_Window.ShowDialog() == true)
+			sqlConnection.Open();
+
+			SqlDataReader sqlReader = null;
+
+			string command = "SELECT * FROM [Users] WHERE [Login]='" + Login_Box.Text + "'";
+
+			SqlCommand commandsql = new SqlCommand(command, sqlConnection);
+			try
 			{
-				this.Show();
+				sqlReader = commandsql.ExecuteReader();
+
+				if (sqlReader.Read())
+				{
+					MessageBox.Show(Convert.ToString(sqlReader["Login"]) + " " + Convert.ToString(sqlReader["Password"]) + " " + Convert.ToString(sqlReader["Status"]) + " " + Convert.ToString(sqlReader["State"]) + " " + Convert.ToString(sqlReader["Date"]));
+					if (Convert.ToString(sqlReader["Date"]) == "new_user")
+					{
+						Password_Change_Window password_change = new Password_Change_Window();
+						password_change.Owner = this;
+						this.Hide();
+
+						password_change.name = Login_Box.Text;
+						if (password_change.ShowDialog() == true)
+						{
+							User_Window user_Window = new User_Window();
+							user_Window.Owner = this;
+
+							this.Hide();
+							user_Window.login = Login_Box.Text;
+							user_Window.password = Password_Box.Password;
+							if (user_Window.ShowDialog() == true)
+							{
+								this.Show();
+							}
+							else
+								this.Show();
+						}
+					}
+					else
+					{
+						User_Window user_Window = new User_Window();
+						user_Window.Owner = this;
+
+						this.Hide();
+						user_Window.login = Login_Box.Text;
+						user_Window.password = Password_Box.Password;
+						if (user_Window.ShowDialog() == true)
+						{
+							this.Show();
+						}
+						else
+							this.Show();
+					}
+				}
 			}
-			else
-				this.Show();
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message.ToString());
+			}
+			finally
+			{
+				if (sqlReader != null)
+					sqlReader.Close();
+			}
 		}
 
 		private void Enter_Click(object sender, RoutedEventArgs e)

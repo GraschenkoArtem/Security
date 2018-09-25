@@ -33,10 +33,10 @@ namespace Security
 		private void Accept_Click(object sender, RoutedEventArgs e)
 		{
 
-			if (New_Password_Box.Text != "")
+			if (New_Password_Box.Password != "")
 			{
 				Regex regex = new Regex(@"[0-9.,;:]");
-				if (regex.IsMatch(New_Password_Box.Text))
+				if (regex.IsMatch(New_Password_Box.Password))
 				{
 					MessageBox.Show("Нельзя вводит данные символы [0-9], [,.:;]");
 				}
@@ -54,7 +54,7 @@ namespace Security
 
 					try
 					{
-						commandsql.Parameters.AddWithValue("Password", New_Password_Box.Text);
+						commandsql.Parameters.AddWithValue("Password", New_Password_Box.Password);
 						commandsql.ExecuteNonQuery();
 					}
 					catch (Exception ex)

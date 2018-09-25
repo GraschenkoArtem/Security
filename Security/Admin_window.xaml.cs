@@ -41,16 +41,16 @@ namespace Security
 
 		private void Password_Change(object sender, RoutedEventArgs e)
 		{
-			if (New_Password_Box.Text != "")
+			if (New_Password_Box.Password != "" && New_Password_Box_Accept.Password != "")
 			{
 				Regex regex = new Regex(@"[0-9.,;:]");
-				if (regex.IsMatch(New_Password_Box.Text))
+				if (regex.IsMatch(New_Password_Box.Password))
 				{
 					MessageBox.Show("Нельзя вводит данные символы [0-9], [,.:;]");
 				}
 				else
 				{
-					if (Old_Password_Box.Text == password)
+					if (Old_Password_Box.Password == password)
 					{
 						string path = System.IO.Path.GetFullPath("Userdb.mdf");
 
@@ -65,11 +65,14 @@ namespace Security
 
 						try
 						{
-							commandsql.Parameters.AddWithValue("Password", New_Password_Box.Text);
+							commandsql.Parameters.AddWithValue("Password", New_Password_Box.Password);
 							commandsql.ExecuteNonQuery();
 
 
 							MessageBox.Show("Пароль изменен!");
+							Old_Password_Box.Password = "";
+							New_Password_Box.Password = "";
+							New_Password_Box_Accept.Password = "";
 						}
 						catch (Exception ex)
 						{

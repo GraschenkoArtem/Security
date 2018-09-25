@@ -33,7 +33,7 @@ namespace Security
 			if (New_Login_Box.Text != "")
 			{
 				Regex regex = new Regex(@"[0-9.,;:]");
-				if (regex.IsMatch(New_Password_Box.Text)) {
+				if (regex.IsMatch(New_Password_Box.Password)) {
 					MessageBox.Show("Нельзя вводит данные символы [0-9], [,.:;]");
 				}
 				else
@@ -50,7 +50,7 @@ namespace Security
 						SqlCommand commandsql = new SqlCommand("INSERT INTO [Users] (Login, Password, Status, State) VALUES (@Login, @Password, @Status, @State)", sqlConnection);
 
 						commandsql.Parameters.AddWithValue("Login", New_Login_Box.Text);
-						commandsql.Parameters.AddWithValue("Password", New_Password_Box.Text);
+						commandsql.Parameters.AddWithValue("Password", New_Password_Box.Password);
 						commandsql.Parameters.AddWithValue("Status", "user");
 						commandsql.Parameters.AddWithValue("State", "active");
 

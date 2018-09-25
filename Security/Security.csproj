@@ -78,6 +78,9 @@
     <Compile Include="DB_Window.xaml.cs">
       <DependentUpon>DB_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Password_Change_Window.xaml.cs">
+      <DependentUpon>Password_Change_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Password_Window.xaml.cs">
       <DependentUpon>Password_Window.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Password_Change_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Password_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
